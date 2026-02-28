@@ -1,24 +1,25 @@
 [gd_scene format=3 uid="uid://6hodb7diplx0"]
 
-[ext_resource type="Texture2D" uid="uid://t88kk7rxwsd2" path="res://assets/textures/nougatbit.png" id="1_a8hw6"]
 [ext_resource type="Script" uid="uid://dtt1uy35tq0ic" path="res://src/enemies/enemy.gd" id="1_jg4ye"]
 [ext_resource type="Script" uid="uid://dsljgjm7mw8mi" path="res://src/enemies/weakspot_manager.gd" id="3_abny1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jg4ye"]
-size = Vector3(2, 2, 1)
+size = Vector3(2.1240845, 2.1358643, 0.1)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=936806723]
 script = ExtResource("1_jg4ye")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=2058531823]
 cast_shadow = 0
-billboard = 2
 texture_filter = 0
-texture = ExtResource("1_a8hw6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=944141421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026763916, 0.1729126, 0)
 shape = SubResource("BoxShape3D_jg4ye")
 
 [node name="WeakspotManager" type="Node3D" parent="." unique_id=1545054018 node_paths=PackedStringArray("enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.11825186)
 script = ExtResource("3_abny1")
 enemy = NodePath("..")
+weakspot_interval = 3.0
+spawn_radius = 1.0

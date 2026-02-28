@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c5ity5og2fmes"]
+
+[ext_resource type="PackedScene" uid="uid://6hodb7diplx0" path="res://src/enemies/enemy.tscn" id="1_6citr"]
+[ext_resource type="Texture2D" uid="uid://t88kk7rxwsd2" path="res://assets/textures/nougatbit.png" id="2_nvs3j"]
+
+[node name="NougatBit" unique_id=936806723 instance=ExtResource("1_6citr")]
+
+[node name="Sprite3D" parent="." index="0" unique_id=2058531823]
+texture = ExtResource("2_nvs3j")

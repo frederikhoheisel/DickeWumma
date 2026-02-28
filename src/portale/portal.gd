@@ -8,10 +8,11 @@ extends Node3D
 
 
 var time: float = 0.0
+var container: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	container = get_tree().get_first_node_in_group("EnemyContainer")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,8 +23,20 @@ func _process(delta: float) -> void:
 	if time >= spawn_interval:
 		time = 0.0
 		_spawn_enemy()
+		spawn_amount -= 1
+		
+		if spawn_amount <= 0:
+			self.queue_free()
 
 
 func _spawn_enemy() -> void:
 	var enemy_scene: CharacterBody3D = enemys[randi() % enemys.size()].instantiate()
-	self.add_child(enemy_scene)
+	
+	await get_tree().process_frame
+	
+	enemy_scene.position = self.global_position \
+		+ Vector3(randf_range(-5.0, 5.0), randf_range(-2.0, 2.0), randf_range(-5.0, 5.0))
+	
+	container.add_child(enemy_scene)
+	
+	enemy_scene.look_at(-enemy_scene.global_position)

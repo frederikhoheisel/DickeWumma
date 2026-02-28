@@ -56,10 +56,12 @@ func shoot_dw() -> void:
 			current_barrel.bumm()
 			current_barrel = barrel_left
 		
-		%HitRayCast3D.force_raycast_update()
-		if %HitRayCast3D.is_colliding():
-			var collider = %HitRayCast3D.get_collider()
-			
-			if collider.has_method("take_damage"):
-				print("player: raycast hit")
-				collider.take_damage(damage)
+		if collider.has_method("take_damage"):
+			print("player: raycast hit")
+			collider.take_damage(damage)
+
+
+func _on_hitbox_body_entered(body: Node3D) -> void:
+	print(body)
+	if body is CharacterBody3D:
+		get_tree().get_first_node_in_group("HUD").end_game()
