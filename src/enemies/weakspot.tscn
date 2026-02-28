@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c3keq24tiu6qs"]
+
+[ext_resource type="Script" uid="uid://ibub5kk1xyqj" path="res://src/enemies/weakspot.gd" id="1_v3tpp"]
+
+[sub_resource type="Gradient" id="Gradient_dkpy0"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0.62352943, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v3tpp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2lh38"]
+noise = SubResource("FastNoiseLite_v3tpp")
+color_ramp = SubResource("Gradient_dkpy0")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t20e"]
+no_depth_test = true
+albedo_texture = SubResource("NoiseTexture2D_2lh38")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkpy0"]
+material = SubResource("StandardMaterial3D_8t20e")
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3tpp"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Weakspot" type="Area3D" unique_id=1639530510]
+script = ExtResource("1_v3tpp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1164843544]
+mesh = SubResource("BoxMesh_dkpy0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=39400257]
+shape = SubResource("BoxShape3D_v3tpp")
