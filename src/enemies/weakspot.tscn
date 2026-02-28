@@ -19,18 +19,19 @@ emission = Color(1, 0, 0, 1)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_dkpy0"]
+[sub_resource type="SphereMesh" id="SphereMesh_v3tpp"]
 material = SubResource("StandardMaterial3D_8t20e")
-size = Vector3(0.2, 0.2, 0.2)
+radius = 0.3
+height = 0.6
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v3tpp"]
-size = Vector3(0.2, 0.2, 0.2)
+[sub_resource type="SphereShape3D" id="SphereShape3D_2lh38"]
+radius = 0.3
 
 [node name="Weakspot" type="Area3D" unique_id=1639530510]
 script = ExtResource("1_v3tpp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1164843544]
-mesh = SubResource("BoxMesh_dkpy0")
+mesh = SubResource("SphereMesh_v3tpp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=39400257]
-shape = SubResource("BoxShape3D_v3tpp")
+shape = SubResource("SphereShape3D_2lh38")

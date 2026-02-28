@@ -32,9 +32,11 @@ func _process(delta: float) -> void:
 func _spawn_enemy() -> void:
 	var enemy_scene: CharacterBody3D = enemys[randi() % enemys.size()].instantiate()
 	
-	container.add_child(enemy_scene)
+	await get_tree().process_frame
 	
-	enemy_scene.global_position = self.global_position \
+	enemy_scene.position = self.global_position \
 		+ Vector3(randf_range(-5.0, 5.0), randf_range(-2.0, 2.0), randf_range(-5.0, 5.0))
+	
+	container.add_child(enemy_scene)
 	
 	enemy_scene.look_at(-enemy_scene.global_position)

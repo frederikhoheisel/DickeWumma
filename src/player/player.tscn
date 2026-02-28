@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cv0tok6vpm7li"]
 
-[ext_resource type="Script" path="res://src/player/player.gd" id="1_4anbu"]
+[ext_resource type="Script" uid="uid://bform773xcb8p" path="res://src/player/player.gd" id="1_4anbu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mf2ua"]
 radius = 1.5
@@ -80,3 +80,5 @@ unique_name_in_owner = true
 enabled = false
 target_position = Vector3(0, 0, -999)
 collide_with_areas = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

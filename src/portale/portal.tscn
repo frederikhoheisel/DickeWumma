@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chgxng7hobq71" path="res://src/portale/portal.gd" id="1_g23no"]
 [ext_resource type="Texture2D" uid="uid://dimqdsouhmrlu" path="res://assets/textures/portal_blau.png" id="1_u23ll"]
-[ext_resource type="PackedScene" uid="uid://6hodb7diplx0" path="res://src/enemies/enemy.tscn" id="2_ngqry"]
+[ext_resource type="PackedScene" uid="uid://c5ity5og2fmes" path="res://src/enemies/nougat_bit.tscn" id="2_ngqry"]
 
 [node name="Portal" type="Node3D" unique_id=828086411]
 script = ExtResource("1_g23no")
