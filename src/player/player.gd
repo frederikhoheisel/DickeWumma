@@ -55,6 +55,10 @@ func shoot_dw() -> void:
 			$AnimationPlayer.play("recoil_right")
 			current_barrel.bumm()
 			current_barrel = barrel_left
+	
+	%HitRayCast3D.force_raycast_update()
+	if %HitRayCast3D.is_colliding():
+		var collider = %HitRayCast3D.get_collider()
 		
 		if collider.has_method("take_damage"):
 			print("player: raycast hit")
