@@ -1,8 +1,12 @@
 extends CharacterBody3D
 
 
-@export var speed: float = 0.5
+@export var speed: float = 2.0
 @export var health: int = 10
+
+
+#func _ready() -> void:
+	#self.look_at(-self.global_position)
 
 
 func _physics_process(_delta: float) -> void:
@@ -18,4 +22,5 @@ func take_damage(amount: int) -> void:
 
 
 func die() -> void:
-	pass
+	get_tree().get_first_node_in_group("HUD").update_score()
+	self.queue_free()

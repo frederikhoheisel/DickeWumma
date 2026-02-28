@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d2gfwc6728ela"]
 
-[ext_resource type="PackedScene" uid="uid://bmpvx7dqog5o6" path="res://src/portale/portal.tscn" id="2_yw548"]
+[ext_resource type="PackedScene" uid="uid://cv0tok6vpm7li" path="res://src/player/player.tscn" id="2_shyrb"]
+[ext_resource type="PackedScene" uid="uid://b4wpsgba3ld5o" path="res://ui/hud.tscn" id="3_1h8ct"]
+[ext_resource type="Script" uid="uid://bse80nh6u5fv6" path="res://src/level/wave_manager.gd" id="4_1h8ct"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cutka"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -44,9 +46,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1814355443]
 environment = SubResource("Environment_shyrb")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1785854600]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9809704, 0)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1895868032]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=887661849]
@@ -55,5 +54,11 @@ mesh = SubResource("PlaneMesh_yw548")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=106833606]
 shape = SubResource("WorldBoundaryShape3D_shyrb")
 
-[node name="Portal" parent="." unique_id=828086411 instance=ExtResource("2_yw548")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -15)
+[node name="Player" parent="." unique_id=1093579966 instance=ExtResource("2_shyrb")]
+
+[node name="Hud" parent="." unique_id=994730365 instance=ExtResource("3_1h8ct")]
+
+[node name="EnemyContainer" type="Node3D" parent="." unique_id=22959762 groups=["EnemyContainer"]]
+
+[node name="WaveManager" type="Node3D" parent="." unique_id=317879170]
+script = ExtResource("4_1h8ct")

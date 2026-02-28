@@ -6,5 +6,6 @@ signal hit(amount: float)
 
 
 func take_damage(amount: int) -> void:
-	hit.emit(amount * 2.0)
+	print("weak")
+	hit.emit(amount * 5.0)
 	self.queue_free()

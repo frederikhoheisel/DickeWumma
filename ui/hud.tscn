@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://b4wpsgba3ld5o"]
 
+[ext_resource type="Script" uid="uid://bwse4yqwhb32v" path="res://ui/hud.gd" id="1_276te"]
 [ext_resource type="Texture2D" uid="uid://blyse1gn0fqy4" path="res://assets/crosshair.png" id="1_rbyyf"]
 
-[node name="Hud" type="CanvasLayer" unique_id=994730365]
+[node name="Hud" type="CanvasLayer" unique_id=994730365 groups=["HUD"]]
+script = ExtResource("1_276te")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1137405149]
 texture_filter = 3
@@ -18,3 +20,18 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_rbyyf")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=246584557]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.28235295, 0.6156863, 0.6156863, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "SCORE: 0"
