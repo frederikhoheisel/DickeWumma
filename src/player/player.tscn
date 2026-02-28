@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cv0tok6vpm7li"]
 
 [ext_resource type="Script" uid="uid://bform773xcb8p" path="res://src/player/player.gd" id="1_4anbu"]
+[ext_resource type="PackedScene" uid="uid://bbhiq880tts4e" path="res://src/player/barrel.tscn" id="2_rxibo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mf2ua"]
 radius = 1.5
@@ -16,27 +17,160 @@ metallic = 1.0
 metallic_specular = 0.0
 roughness = 0.25
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_244u8"]
-top_radius = 0.08
-bottom_radius = 0.08
-height = 1.0
+[sub_resource type="Animation" id="Animation_rxibo"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/DickeWumma/BarrelLeft:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.2, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/DickeWumma/BarrelLeft:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.427, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/DickeWumma/BarrelLeft:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.749, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/DickeWumma/BarrelRight:position:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.2, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head/Camera3D/DickeWumma/BarrelRight:position:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.427, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head/Camera3D/DickeWumma/BarrelRight:position:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.749, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0)
+}
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_jiejy"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 0.2
+[sub_resource type="Animation" id="Animation_mf2ua"]
+resource_name = "recoil_left"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/DickeWumma/BarrelLeft:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.2, -0.2, 0, 0.2, 0, -0.2, -0.016533911, 0, 0, 0, -0.2, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.1, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/DickeWumma/BarrelLeft:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(-0.427, -0.2, 0, 0.1, -0.015197217, -0.49149188, -0.032536797, -0.008261085, 0, 0, -0.427, -0.2, -0.008290529, 0.1, 0.02403599),
+"times": PackedFloat32Array(0, 0.09920347, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/DickeWumma/BarrelLeft:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(-0.749, -0.2, 0, 0.1, 0.009814978, -0.5781558, -0.032536797, -0.005628586, 0, 0, -0.749, -0.16666667, 0.02247727, 0.16666666, 0.019023955),
+"times": PackedFloat32Array(0, 0.09920347, 1)
+}
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o822w"]
-albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
-metallic = 0.62
-metallic_specular = 0.7
-roughness = 0.36
+[sub_resource type="Animation" id="Animation_244u8"]
+resource_name = "recoil_right"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/DickeWumma/BarrelRight:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(0.2, -0.2, 0, 0.2, 0, 0.2, -0.016663512, 0, 0, 0, 0.2, -0.2, 0, 0.2, 0),
+"times": PackedFloat32Array(0, 0.09998107, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/DickeWumma/BarrelRight:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(-0.427, -0.2, 0, 0.1, 0.00091838837, -0.49522394, -0.016663512, 0.011370659, 0, 0, -0.427, -0.2, 0.01358068, 0.2, 0),
+"times": PackedFloat32Array(0, 0.09998107, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/DickeWumma/BarrelRight:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(-0.749, -0.2, 0, 0.1, 0.036290646, -0.5682693, -0.0333144, -0.0051550865, 0, 0, -0.749, -0.16666667, 0.028232872, 0.2, 0),
+"times": PackedFloat32Array(0, 0.09998107, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5f2sf"]
+_data = {
+&"RESET": SubResource("Animation_rxibo"),
+&"recoil_left": SubResource("Animation_mf2ua"),
+&"recoil_right": SubResource("Animation_244u8")
+}
 
 [node name="Player" type="Node3D" unique_id=1093579966 groups=["player"]]
 script = ExtResource("1_4anbu")
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=673496584]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45894742, 0)
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=103207080]
 shape = SubResource("SphereShape3D_mf2ua")
@@ -55,30 +189,17 @@ current = true
 
 [node name="DickeWumma" type="Node3D" parent="Head/Camera3D" unique_id=630909924]
 
-[node name="BarrelRight" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma" unique_id=1183433272]
-transform = Transform3D(1, 0, 0, 0, 0.35316455, 0.9355612, 0, -0.9355612, 0.35316455, 0.2, -0.4274371, -0.7489269)
-mesh = SubResource("CylinderMesh_244u8")
-surface_material_override/0 = SubResource("StandardMaterial3D_5f2sf")
+[node name="BarrelRight" parent="Head/Camera3D/DickeWumma" unique_id=1044039529 instance=ExtResource("2_rxibo")]
+transform = Transform3D(1, 0, 0, 0, 0.35316455, 0.9355612, 0, -0.9355612, 0.35316455, 0.2, -0.427, -0.749)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma/BarrelRight" unique_id=1762692375]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20694402, 1.8626451e-09)
-mesh = SubResource("CylinderMesh_jiejy")
-surface_material_override/0 = SubResource("StandardMaterial3D_o822w")
-
-[node name="BarrelLeft" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma" unique_id=1015454221]
-transform = Transform3D(1, 0, 0, 0, 0.35316455, 0.9355612, 0, -0.9355612, 0.35316455, -0.2, -0.4274371, -0.7489269)
-mesh = SubResource("CylinderMesh_244u8")
-surface_material_override/0 = SubResource("StandardMaterial3D_5f2sf")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma/BarrelLeft" unique_id=1281385011]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20672676, -1.8626451e-09)
-mesh = SubResource("CylinderMesh_jiejy")
-surface_material_override/0 = SubResource("StandardMaterial3D_o822w")
+[node name="BarrelLeft" parent="Head/Camera3D/DickeWumma" unique_id=884063244 instance=ExtResource("2_rxibo")]
+transform = Transform3D(1, 0, 0, 0, 0.35316455, 0.9355612, 0, -0.9355612, 0.35316455, -0.2, -0.427, -0.749)
 
 [node name="HitRayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1404546432]
 unique_name_in_owner = true
 enabled = false
-target_position = Vector3(0, 0, -999)
+target_position = Vector3(0, 0, -9999)
 collide_with_areas = true
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1926615569]
+libraries/ = SubResource("AnimationLibrary_5f2sf")

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://du30g3qowgkxu" path="res://src/player/player.tscn" id="1_p5d6n"]
 [ext_resource type="PackedScene" uid="uid://b4wpsgba3ld5o" path="res://ui/hud.tscn" id="2_fuded"]
+[ext_resource type="PackedScene" uid="uid://bmpvx7dqog5o6" path="res://src/portale/portal.tscn" id="3_si760"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5d6n"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -52,6 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=644858522]
 transform = Transform3D(1, 0, 0, 0, 3.6232088, 0, 0, 0, 1, 0.8681685, 3.4949563, 0)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1056293269]
-
 [node name="Hud" parent="." unique_id=994730365 instance=ExtResource("2_fuded")]
+
+[node name="Portal" parent="." unique_id=828086411 instance=ExtResource("3_si760")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28.762997)

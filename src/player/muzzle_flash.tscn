@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://3f0l40v12jiv"]
+
+[ext_resource type="Script" uid="uid://mmevp8cs0n2u" path="res://muzzle_flash.gd" id="1_nsxrd"]
+[ext_resource type="Texture2D" uid="uid://ctpd4bmg5dcps" path="res://assets/muzzle_flash.png" id="2_sndpf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1opg"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0.5882353, 0.22352941, 1)
+albedo_texture = ExtResource("2_sndpf")
+disable_receive_shadows = true
+billboard_keep_scale = true
+grow = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_hshn2"]
+material = SubResource("StandardMaterial3D_j1opg")
+size = 0.5
+sections = 2
+section_length = 0.25
+section_segments = 1
+
+[sub_resource type="Gradient" id="Gradient_fljcp"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.48933902, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.113265514, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mrhdt"]
+gradient = SubResource("Gradient_fljcp")
+fill = 1
+fill_from = Vector2(0.49786323, 0.49358973)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4pgj"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(1, 0.22352941, 0, 1)
+albedo_texture = SubResource("GradientTexture2D_mrhdt")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3gs6t"]
+material = SubResource("StandardMaterial3D_h4pgj")
+
+[sub_resource type="Gradient" id="Gradient_toist"]
+offsets = PackedFloat32Array(0.011727079, 0.53411514)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h2m7i"]
+gradient = SubResource("Gradient_toist")
+fill = 1
+fill_from = Vector2(0.49786323, 0.49358973)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohhlm"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = SubResource("GradientTexture2D_h2m7i")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_20ej8"]
+material = SubResource("StandardMaterial3D_ohhlm")
+
+[node name="MuzzleFlash" type="Node3D" unique_id=1520283051]
+script = ExtResource("1_nsxrd")
+
+[node name="Flash" type="CPUParticles3D" parent="." unique_id=7912455]
+transform = Transform3D(1, 0, 0, 0, 0.002059523, 0.99999785, 0, -0.99999785, 0.002059523, 0, 0.00074626604, -0.36234817)
+emitting = false
+amount = 1
+lifetime = 0.09999999999999999
+one_shot = true
+explosiveness = 0.6
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+mesh = SubResource("RibbonTrailMesh_hshn2")
+gravity = Vector3(0, 0, 0)
+
+[node name="Sparks" type="CPUParticles3D" parent="." unique_id=1146751344]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.79
+randomness = 1.0
+fixed_fps = 30
+mesh = SubResource("QuadMesh_3gs6t")
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 0, 1)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
+[node name="Smoke" type="CPUParticles3D" parent="." unique_id=837923077]
+emitting = false
+one_shot = true
+explosiveness = 0.79
+randomness = 1.0
+fixed_fps = 30
+mesh = SubResource("QuadMesh_20ej8")
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(0, 1, 0)
+spread = 21.05
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.4
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=76773554]
+visible = false
+light_color = Color(1, 0.4862745, 0.1764706, 1)
+light_size = 0.402

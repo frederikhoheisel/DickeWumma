@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bbhiq880tts4e"]
+
+[ext_resource type="PackedScene" uid="uid://3f0l40v12jiv" path="res://src/player/muzzle_flash.tscn" id="1_k0ukm"]
+[ext_resource type="Script" uid="uid://ctrk6jggk6iri" path="res://src/player/barrel.gd" id="1_kdswg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_244u8"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f2sf"]
+albedo_color = Color(0.75398386, 0.75398386, 0.75398374, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jiejy"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o822w"]
+albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+metallic = 0.62
+metallic_specular = 0.7
+roughness = 0.36
+
+[node name="Barrel" type="MeshInstance3D" unique_id=1044039529]
+transform = Transform3D(1, 0, 0, 0, 0.35316455, 0.9355612, 0, -0.9355612, 0.35316455, 0, 0, 0)
+mesh = SubResource("CylinderMesh_244u8")
+surface_material_override/0 = SubResource("StandardMaterial3D_5f2sf")
+script = ExtResource("1_kdswg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1196610840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20694402, 1.8626451e-09)
+mesh = SubResource("CylinderMesh_jiejy")
+surface_material_override/0 = SubResource("StandardMaterial3D_o822w")
+
+[node name="MuzzleFlash" parent="MeshInstance3D" unique_id=1520283051 instance=ExtResource("1_k0ukm")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -4.371139e-08, -4.371139e-08, 1.9106855e-15, -1, 0, 1, 1.9106855e-15, -1.3434259e-08, 0.32505333, -3.4924592e-09)
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1373646983]
+one_shot = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
