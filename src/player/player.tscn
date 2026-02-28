@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://du30g3qowgkxu"]
+
+[ext_resource type="Script" uid="uid://bform773xcb8p" path="res://src/player/player.gd" id="1_4anbu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mf2ua"]
+radius = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x42xx"]
+top_radius = 0.7
+bottom_radius = 0.8
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5f2sf"]
+albedo_color = Color(0.75398386, 0.75398386, 0.75398374, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_244u8"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jiejy"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o822w"]
+albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+metallic = 0.62
+metallic_specular = 0.7
+roughness = 0.36
+
+[node name="Player" type="Node3D" unique_id=1093579966 groups=["player"]]
+script = ExtResource("1_4anbu")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=673496584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45894742, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=103207080]
+shape = SubResource("SphereShape3D_mf2ua")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1379177578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031617522, 0)
+mesh = SubResource("CylinderMesh_x42xx")
+surface_material_override/0 = SubResource("StandardMaterial3D_5f2sf")
+
+[node name="Head" type="Node3D" parent="." unique_id=1571854324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7435726, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=539503203]
+unique_name_in_owner = true
+current = true
+
+[node name="DickeWumma" type="Node3D" parent="Head/Camera3D" unique_id=630909924]
+
+[node name="BarrelRight" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma" unique_id=1183433272]
+transform = Transform3D(1, 0, 0, 0, 0.35316455, 0.9355612, 0, -0.9355612, 0.35316455, 0.2, -0.4274371, -0.7489269)
+mesh = SubResource("CylinderMesh_244u8")
+surface_material_override/0 = SubResource("StandardMaterial3D_5f2sf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma/BarrelRight" unique_id=1762692375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20694402, 1.8626451e-09)
+mesh = SubResource("CylinderMesh_jiejy")
+surface_material_override/0 = SubResource("StandardMaterial3D_o822w")
+
+[node name="BarrelLeft" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma" unique_id=1015454221]
+transform = Transform3D(1, 0, 0, 0, 0.35316455, 0.9355612, 0, -0.9355612, 0.35316455, -0.2, -0.4274371, -0.7489269)
+mesh = SubResource("CylinderMesh_244u8")
+surface_material_override/0 = SubResource("StandardMaterial3D_5f2sf")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Head/Camera3D/DickeWumma/BarrelLeft" unique_id=1281385011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20672676, -1.8626451e-09)
+mesh = SubResource("CylinderMesh_jiejy")
+surface_material_override/0 = SubResource("StandardMaterial3D_o822w")
+
+[node name="HitRayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1404546432]
+unique_name_in_owner = true

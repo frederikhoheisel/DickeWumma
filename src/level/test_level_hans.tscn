@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cu8mlsgy53dww"]
+
+[ext_resource type="PackedScene" uid="uid://du30g3qowgkxu" path="res://src/player/player.tscn" id="1_p5d6n"]
+[ext_resource type="PackedScene" uid="uid://b4wpsgba3ld5o" path="res://ui/hud.tscn" id="2_fuded"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5d6n"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_fuded"]
+sky_material = SubResource("ProceduralSkyMaterial_p5d6n")
+
+[sub_resource type="Environment" id="Environment_si760"]
+background_mode = 2
+sky = SubResource("Sky_fuded")
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_fuded"]
+
+[sub_resource type="Gradient" id="Gradient_si760"]
+colors = PackedColorArray(0.15294118, 0.5137255, 0, 1, 0.49567187, 0.2761892, 2.4065375e-07, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5imvl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q12wl"]
+noise = SubResource("FastNoiseLite_5imvl")
+color_ramp = SubResource("Gradient_si760")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n56ov"]
+albedo_texture = SubResource("NoiseTexture2D_q12wl")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6e18h"]
+material = SubResource("StandardMaterial3D_n56ov")
+size = Vector2(20, 20)
+
+[node name="TestLevelHans" type="Node3D" unique_id=1273785058]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1736688580]
+environment = SubResource("Environment_si760")
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=1864527302]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=1542003689]
+shape = SubResource("WorldBoundaryShape3D_fuded")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=774852599]
+mesh = SubResource("PlaneMesh_6e18h")
+
+[node name="Player" parent="." unique_id=1093579966 instance=ExtResource("1_p5d6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=644858522]
+transform = Transform3D(1, 0, 0, 0, 3.6232088, 0, 0, 0, 1, 0.8681685, 3.4949563, 0)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1056293269]
+
+[node name="Hud" parent="." unique_id=994730365 instance=ExtResource("2_fuded")]
