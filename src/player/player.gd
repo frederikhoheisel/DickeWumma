@@ -43,7 +43,7 @@ func shoot_dw() -> void:
 	if current_barrel.can_shoot:
 		# screenshake
 		screenshake()
-		if current_barrel == barrel_left:	
+		if current_barrel == barrel_left:
 			# muzzle_flash & particles
 			$AnimationPlayer.play("recoil_left")
 			current_barrel.bumm()
