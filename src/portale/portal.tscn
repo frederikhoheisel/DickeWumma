@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://chgxng7hobq71" path="res://src/portale/portal.gd" id="1_g23no"]
 [ext_resource type="Texture2D" uid="uid://dimqdsouhmrlu" path="res://assets/textures/portal_blau.png" id="1_u23ll"]
 [ext_resource type="PackedScene" uid="uid://c5ity5og2fmes" path="res://src/enemies/nougat_bit.tscn" id="2_ngqry"]
+[ext_resource type="PackedScene" uid="uid://cp70i6x8v037i" path="res://src/enemies/picasso.tscn" id="3_np8ix"]
 
 [node name="Portal" type="Node3D" unique_id=828086411]
 script = ExtResource("1_g23no")
-enemys = Array[PackedScene]([ExtResource("2_ngqry")])
+enemys = Array[PackedScene]([ExtResource("2_ngqry"), ExtResource("3_np8ix")])
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=961509544]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("1_u23ll")

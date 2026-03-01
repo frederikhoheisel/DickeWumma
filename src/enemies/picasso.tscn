@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cp70i6x8v037i"]
+
+[ext_resource type="PackedScene" uid="uid://6hodb7diplx0" path="res://src/enemies/enemy.tscn" id="1_0k3an"]
+[ext_resource type="Texture2D" uid="uid://3ayvybixlu86" path="res://assets/tantakel.png" id="2_7gu5g"]
+[ext_resource type="PackedScene" uid="uid://bofggjfpx16ly" path="res://src/player/boom.tscn" id="3_7gu5g"]
+
+[node name="Picasso" unique_id=936806723 instance=ExtResource("1_0k3an")]
+health = 5
+
+[node name="Sprite3D" parent="." index="0" unique_id=2058531823]
+texture = ExtResource("2_7gu5g")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=944141421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027943611, -0.2482624, 0)
+
+[node name="WeakspotManager" parent="." index="2" unique_id=1545054018]
+spawn_radius = 1.5
+
+[node name="Boom" parent="." index="4" unique_id=373985536 instance=ExtResource("3_7gu5g")]

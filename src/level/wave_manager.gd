@@ -33,7 +33,7 @@ func _spawn_portal() -> void:
 func _get_portal_pos() -> Vector3:
 	var pos: Vector3 = Vector3(randf_range(-30.0, 30.0), randf_range(2.0, 5.0), randf_range(-10.0, -60.0))
 	
-	while -pos.z > abs(pos.x):
+	while (-pos.z) > abs(pos.x):
 		pos = Vector3(randf_range(-30.0, 30.0), randf_range(2.0, 5.0), randf_range(-10.0, -60.0))
 	
 	return pos

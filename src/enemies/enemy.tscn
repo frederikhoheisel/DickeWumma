@@ -4,13 +4,52 @@
 [ext_resource type="Script" uid="uid://dsljgjm7mw8mi" path="res://src/enemies/weakspot_manager.gd" id="3_abny1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jg4ye"]
-size = Vector3(2.1240845, 2.1358643, 0.1)
+size = Vector3(3.9773579, 3.5699272, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_jg4ye"]
+offsets = PackedFloat32Array(0, 0.7670157)
+colors = PackedColorArray(0, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yvjb1"]
+gradient = SubResource("Gradient_jg4ye")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abny1"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_yvjb1")
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 16.0
+emission_operator = 1
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_yk438"]
+material = SubResource("StandardMaterial3D_abny1")
+
+[sub_resource type="Curve" id="Curve_mpvi4"]
+_data = [Vector2(0, 0.51630425), 0.0, 4.089744, 0, 0, Vector2(0.2549407, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_jx57g"]
+offsets = PackedFloat32Array(0, 0.74229074)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Enemy" type="CharacterBody3D" unique_id=936806723]
 script = ExtResource("1_jg4ye")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=2058531823]
-cast_shadow = 0
+alpha_cut = 1
 texture_filter = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=944141421]
@@ -23,3 +62,16 @@ script = ExtResource("3_abny1")
 enemy = NodePath("..")
 weakspot_interval = 3.0
 spawn_radius = 1.0
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=768556163]
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.6
+mesh = SubResource("QuadMesh_yk438")
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector3(0, 4, 0)
+scale_amount_curve = SubResource("Curve_mpvi4")
+color_ramp = SubResource("Gradient_jx57g")
