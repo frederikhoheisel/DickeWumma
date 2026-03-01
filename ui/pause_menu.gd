@@ -13,6 +13,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_continue_button_pressed() -> void:
+	$AudioStreamPlayer3D.play()
 	paused = false
 	get_tree().paused = false
 	self.visible = false
@@ -20,6 +21,7 @@ func _on_continue_button_pressed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
+	$AudioStreamPlayer3D.play()
 	paused = false
 	get_tree().paused = false
 	self.visible = false
@@ -27,4 +29,5 @@ func _on_restart_button_pressed() -> void:
 
 
 func _on_exit_button_pressed() -> void:
+	$AudioStreamPlayer3D.play()
 	get_tree().quit()

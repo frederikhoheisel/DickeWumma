@@ -6,7 +6,7 @@ extends Node3D
 var look_sensitivity: float = 0.001
 var current_barrrel: int = 0
 var shake_tween: Tween
-var boom: PackedScene = preload("res://src/player/boom.tscn")
+#var boom: PackedScene = preload("res://src/player/boom.tscn")
 var hud: CanvasLayer
 
 
@@ -50,6 +50,7 @@ func shoot_dw() -> void:
 	if current_barrel.can_shoot:
 		# screenshake
 		screenshake()
+		$BoomSound.play()
 		if current_barrel == barrel_left:
 			# muzzle_flash & particles
 			$AnimationPlayer.play("recoil_left")
@@ -71,13 +72,14 @@ func shoot_dw() -> void:
 			if collider.has_method("take_damage"):
 				print("player: raycast hit")
 				collider.take_damage(damage)
-				spawn_boom(%HitRayCast3D.get_collision_point())
+				#spawn_boom(%HitRayCast3D.get_collision_point())
 
 
 func spawn_boom(pos: Vector3) -> void:
-	var boom_scene: Node3D = boom.instantiate()
-	add_child(boom_scene)
-	boom_scene.global_position = pos
+	pass
+	#var boom_scene: Node3D = boom.instantiate()
+	#add_child(boom_scene)
+	#boom_scene.global_position = pos
 
 
 func _on_hitbox_body_entered(body: Node3D) -> void:

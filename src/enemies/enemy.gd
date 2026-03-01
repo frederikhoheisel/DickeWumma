@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	$Blood.restart()
 	if health <= 0:
 		die()
 	

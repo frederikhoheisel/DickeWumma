@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://de7ru4dwewu8i"]
 
 [ext_resource type="Script" uid="uid://d1fcjueo75ota" path="res://ui/pause_menu.gd" id="1_50142"]
+[ext_resource type="AudioStream" uid="uid://c6qsue7svl6ib" path="res://assets/audio/Blip.wav" id="2_ejwgg"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1400816476]
 process_mode = 3
@@ -31,6 +32,9 @@ text = "Restart"
 [node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=1323420921]
 layout_mode = 2
 text = "Exit"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1127728400]
+stream = ExtResource("2_ejwgg")
 
 [connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

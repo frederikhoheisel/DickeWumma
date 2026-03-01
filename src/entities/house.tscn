@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://chwrtx81cgiil"]
+
+[ext_resource type="Texture2D" uid="uid://0sg641e1ht6b" path="res://assets/house.png" id="1_rym24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_coxgt"]
+transparency = 1
+shading_mode = 2
+albedo_texture = ExtResource("1_rym24")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1ow7n"]
+material = SubResource("StandardMaterial3D_coxgt")
+size = Vector2(10, 15)
+
+[node name="House" type="Node3D" unique_id=1687268543]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1105672592]
+mesh = SubResource("QuadMesh_1ow7n")

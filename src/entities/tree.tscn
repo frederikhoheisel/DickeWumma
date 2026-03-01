@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dcdkgww7hn0hx"]
+
+[ext_resource type="Texture2D" uid="uid://ccefl2yjqts8g" path="res://assets/tree.png" id="1_1kwge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwmj1"]
+transparency = 1
+shading_mode = 2
+albedo_texture = ExtResource("1_1kwge")
+
+[sub_resource type="QuadMesh" id="QuadMesh_u4cjb"]
+material = SubResource("StandardMaterial3D_vwmj1")
+size = Vector2(10, 10)
+
+[node name="Tree" type="Node3D" unique_id=1253135190]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=335434133]
+mesh = SubResource("QuadMesh_u4cjb")

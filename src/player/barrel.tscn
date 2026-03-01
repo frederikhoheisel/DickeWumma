@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bbhiq880tts4e"]
 
 [ext_resource type="PackedScene" uid="uid://3f0l40v12jiv" path="res://src/player/muzzle_flash.tscn" id="1_k0ukm"]
-[ext_resource type="Script" path="res://src/player/barrel.gd" id="1_kdswg"]
+[ext_resource type="Script" uid="uid://ctrk6jggk6iri" path="res://src/player/barrel.gd" id="1_kdswg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_244u8"]
 top_radius = 0.08

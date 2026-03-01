@@ -8,14 +8,22 @@ var time_r: float = 0.0
 
 @onready var score_label: Label = %ScoreLabel
 
+func hide_intro():
+	$Intro.visible = false
+	%ScoreLabel.visible = true
+
 
 func update_score() -> void:
+	$AudioStreamPlayer3D.play()
 	score += 1
 	score_label.text = "SCORE: %d" %score
 
 
 func end_game() -> void:
 	$EndScreen.visible = true
+	%ProgL.visible = false
+	%ProgR.visible = false
+	$TextureRect.visible = false
 	get_tree().paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 

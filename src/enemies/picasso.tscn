@@ -2,7 +2,45 @@
 
 [ext_resource type="PackedScene" uid="uid://6hodb7diplx0" path="res://src/enemies/enemy.tscn" id="1_0k3an"]
 [ext_resource type="Texture2D" uid="uid://3ayvybixlu86" path="res://assets/tantakel.png" id="2_7gu5g"]
-[ext_resource type="PackedScene" uid="uid://bofggjfpx16ly" path="res://src/player/boom.tscn" id="3_7gu5g"]
+[ext_resource type="PackedScene" path="res://src/player/boom.tscn" id="3_7gu5g"]
+
+[sub_resource type="Gradient" id="Gradient_7gu5g"]
+colors = PackedColorArray(0.7708273, 6.514497e-05, 0.114575274, 1, 0.40392157, 0.28235295, 0.039215688, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3j2b2"]
+gradient = SubResource("Gradient_7gu5g")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1fkm"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_3j2b2")
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 16.0
+emission_operator = 1
+texture_filter = 0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_j7wwe"]
+material = SubResource("StandardMaterial3D_e1fkm")
+
+[sub_resource type="Curve" id="Curve_0qgks"]
+_data = [Vector2(0, 0.51630425), 0.0, 4.089744, 0, 0, Vector2(0.2549407, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_hljms"]
+offsets = PackedFloat32Array(0, 0.74229074)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Picasso" unique_id=936806723 instance=ExtResource("1_0k3an")]
 health = 5
@@ -17,3 +55,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027943611, -0.2482624, 0)
 spawn_radius = 1.5
 
 [node name="Boom" parent="." index="4" unique_id=373985536 instance=ExtResource("3_7gu5g")]
+
+[node name="Blood" type="CPUParticles3D" parent="." index="5" unique_id=475141061]
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.8
+mesh = SubResource("QuadMesh_j7wwe")
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -9.1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+scale_amount_curve = SubResource("Curve_0qgks")
+color_ramp = SubResource("Gradient_hljms")

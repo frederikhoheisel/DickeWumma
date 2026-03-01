@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://de7ru4dwewu8i" path="res://ui/pause_menu.tscn" id="3_546lt"]
 [ext_resource type="Texture2D" uid="uid://c5op1ptkdcqsn" path="res://assets/textures/rad_under.png" id="5_1v5rv"]
 [ext_resource type="Texture2D" uid="uid://dv65l5stnbwmf" path="res://assets/textures/rad_over.png" id="6_q43x7"]
+[ext_resource type="AudioStream" uid="uid://ct7pf6fs2tifh" path="res://assets/audio/Pickup.wav" id="7_q43x7"]
+[ext_resource type="Texture2D" uid="uid://bh2mwyhxfn5an" path="res://assets/start_screen.png" id="8_srpbi"]
 
 [node name="Hud" type="CanvasLayer" unique_id=994730365 groups=["HUD"]]
 script = ExtResource("1_276te")
@@ -28,6 +30,7 @@ texture = ExtResource("1_rbyyf")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=246584557]
 unique_name_in_owner = true
+visible = false
 z_index = 4096
 anchors_preset = -1
 anchor_left = 0.5
@@ -83,3 +86,15 @@ value = 27.0
 fill_mode = 4
 texture_under = ExtResource("5_1v5rv")
 texture_progress = ExtResource("6_q43x7")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=171121139]
+stream = ExtResource("7_q43x7")
+
+[node name="Intro" type="TextureRect" parent="." unique_id=221448223]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_srpbi")
+expand_mode = 2

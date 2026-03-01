@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://btsjs3asptaa"]
+
+[ext_resource type="PackedScene" uid="uid://bbhiq880tts4e" path="res://src/player/barrel.tscn" id="1_y2hfv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3r8bw"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lgnll"]
+albedo_color = Color(0.75398386, 0.75398386, 0.75398374, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_52q63"]
+top_radius = 0.7
+bottom_radius = 0.8
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqbdd"]
+albedo_color = Color(0.75398386, 0.75398386, 0.75398374, 1)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.25
+
+[node name="DummyWumme" type="Node3D" unique_id=911346391]
+
+[node name="Barrel" parent="." unique_id=1044039529 instance=ExtResource("1_y2hfv")]
+transform = Transform3D(1.2906438, 0, 0, 0, 0.89251226, 1.3562912, 0, -1.4078948, 0.85979897, 0.24314535, 0.1305074, -0.26635724)
+mesh = SubResource("CylinderMesh_3r8bw")
+surface_material_override/0 = SubResource("StandardMaterial3D_lgnll")
+script = null
+
+[node name="Barrel2" parent="." unique_id=1750559946 instance=ExtResource("1_y2hfv")]
+transform = Transform3D(1.2906438, 0, 0, 0, 0.89251226, 1.3562912, 0, -1.4078948, 0.85979897, -0.24433506, 0.1305074, -0.26635724)
+mesh = SubResource("CylinderMesh_3r8bw")
+surface_material_override/0 = SubResource("StandardMaterial3D_lgnll")
+script = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=655795880]
+transform = Transform3D(1, 0, 0, 0, 1.8671229, 0, 0, 0, 1, 0, -0.31243742, 0)
+mesh = SubResource("CylinderMesh_52q63")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqbdd")
