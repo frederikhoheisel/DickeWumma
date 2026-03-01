@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bofggjfpx16ly"]
+
+[ext_resource type="Script" uid="uid://b7u5leydshr65" path="res://src/player/boom.gd" id="1_ikupf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2c7b"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+vertex_color_use_as_albedo = true
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_ikupf"]
+material = SubResource("StandardMaterial3D_d2c7b")
+radius = 0.2
+height = 0.4
+radial_segments = 6
+rings = 2
+
+[sub_resource type="Curve" id="Curve_d2c7b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ikupf"]
+offsets = PackedFloat32Array(0, 0.7202643)
+colors = PackedColorArray(0.34781694, 0.34781697, 0.3478169, 1, 1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikupf"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xcci7"]
+material = SubResource("StandardMaterial3D_ikupf")
+top_radius = 0.0
+bottom_radius = 0.1
+height = 0.5
+radial_segments = 4
+rings = 1
+
+[sub_resource type="Curve" id="Curve_kvqy3"]
+_data = [Vector2(0, 0.298913), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_wjuxn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_uo6k3"]
+colors = PackedColorArray(0.2627451, 0.11372549, 0.050980393, 1, 0.55481577, 0.34093672, 0.094843276, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcci7"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_kvqy3"]
+material = SubResource("StandardMaterial3D_xcci7")
+radial_segments = 8
+rings = 2
+
+[sub_resource type="Curve" id="Curve_wjuxn"]
+_data = [Vector2(0, 0), 0.0, 9.206521, 0, 0, Vector2(0.2628458, 0.9836955), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_x6q5v"]
+offsets = PackedFloat32Array(0, 0.45594713, 1)
+colors = PackedColorArray(1, 1, 0.4392157, 1, 1, 0.49019608, 0.38431373, 0.5019608, 0.59607846, 0.30588236, 0.32941177, 0)
+
+[node name="Boom" type="Node3D" unique_id=373985536]
+script = ExtResource("1_ikupf")
+
+[node name="Smoke" type="CPUParticles3D" parent="." unique_id=1664431026]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.6
+randomness = 0.5
+lifetime_randomness = 0.5
+mesh = SubResource("SphereMesh_ikupf")
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 4, 0)
+scale_amount_curve = SubResource("Curve_d2c7b")
+color_ramp = SubResource("Gradient_ikupf")
+
+[node name="Shards" type="CPUParticles3D" parent="." unique_id=1472785596]
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.7
+mesh = SubResource("CylinderMesh_xcci7")
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+scale_amount_curve = SubResource("Curve_kvqy3")
+color_ramp = SubResource("Gradient_wjuxn")
+color_initial_ramp = SubResource("Gradient_uo6k3")
+
+[node name="Blink" type="CPUParticles3D" parent="." unique_id=37926821]
+emitting = false
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+mesh = SubResource("SphereMesh_kvqy3")
+emission_shape = 1
+emission_sphere_radius = 0.5
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_wjuxn")
+color_ramp = SubResource("Gradient_x6q5v")
