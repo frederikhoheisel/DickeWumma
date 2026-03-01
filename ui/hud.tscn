@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://blyse1gn0fqy4" path="res://assets/crosshair.png" id="1_rbyyf"]
 [ext_resource type="PackedScene" uid="uid://icad0tx81kgb" path="res://ui/end_screen.tscn" id="3_7ihmi"]
 [ext_resource type="PackedScene" uid="uid://de7ru4dwewu8i" path="res://ui/pause_menu.tscn" id="3_546lt"]
+[ext_resource type="Texture2D" uid="uid://c5op1ptkdcqsn" path="res://assets/textures/rad_under.png" id="5_1v5rv"]
+[ext_resource type="Texture2D" uid="uid://dv65l5stnbwmf" path="res://assets/textures/rad_over.png" id="6_q43x7"]
 
 [node name="Hud" type="CanvasLayer" unique_id=994730365 groups=["HUD"]]
 script = ExtResource("1_276te")
@@ -47,3 +49,37 @@ visible = false
 
 [node name="PauseMenu" parent="." unique_id=1400816476 instance=ExtResource("3_546lt")]
 visible = false
+
+[node name="ProgL" type="TextureProgressBar" parent="." unique_id=1377737029]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 1.0
+anchor_right = 0.3
+anchor_bottom = 1.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+value = 27.0
+fill_mode = 4
+texture_under = ExtResource("5_1v5rv")
+texture_progress = ExtResource("6_q43x7")
+
+[node name="ProgR" type="TextureProgressBar" parent="." unique_id=442561615]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 1.0
+anchor_right = 0.7
+anchor_bottom = 1.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+value = 27.0
+fill_mode = 4
+texture_under = ExtResource("5_1v5rv")
+texture_progress = ExtResource("6_q43x7")

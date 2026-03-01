@@ -5,13 +5,15 @@ extends CharacterBody3D
 @export var health: int = 10
 
 
-#func _ready() -> void:
-	#self.look_at(-self.global_position)
+func _ready() -> void:
+	$CPUParticles3D.restart()
 
 
-func _physics_process(_delta: float) -> void:
-	velocity = -self.global_position.normalized() * speed
-
+func _physics_process(delta: float) -> void:
+	velocity += -self.global_position.normalized() * speed * delta
+	
+	velocity = clamp(velocity, Vector3.ZERO, -self.global_position.normalized() * speed)
+	
 	move_and_slide()
 
 
@@ -19,6 +21,8 @@ func take_damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
 		die()
+	
+	velocity = self.global_position.normalized() * 5.0
 
 
 func die() -> void:

@@ -1,6 +1,8 @@
 extends MeshInstance3D
 
+
 var can_shoot = true
+
 
 func bumm() -> void:
 	can_shoot = false

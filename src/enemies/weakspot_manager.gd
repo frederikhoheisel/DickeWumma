@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	time += delta
 	
-	if time >= next_time and self.get_children().size() < 3:
+	if time >= next_time and self.get_children().size() < 2:
 		next_time = weakspot_interval + randf_range(-spawn_time_randomness, spawn_time_randomness)
 		time = 0.0
 		_spawn_weakspot()

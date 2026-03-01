@@ -1,9 +1,15 @@
 extends Node3D
 
 @export var damage: int = 1
+
+
 var look_sensitivity: float = 0.001
 var current_barrrel: int = 0
 var shake_tween: Tween
+var boom: PackedScene = preload("res://src/player/boom.tscn")
+var hud: CanvasLayer
+
+
 @onready var barrel_left: MeshInstance3D = $Head/Camera3D/DickeWumma/BarrelLeft
 @onready var barrel_right: MeshInstance3D = $Head/Camera3D/DickeWumma/BarrelRight
 @onready var current_barrel: MeshInstance3D = barrel_left
@@ -11,6 +17,7 @@ var shake_tween: Tween
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hud = get_tree().get_first_node_in_group("HUD")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -48,6 +55,7 @@ func shoot_dw() -> void:
 			$AnimationPlayer.play("recoil_left")
 			current_barrel.bumm()
 			current_barrel = barrel_right
+			hud.left()
 		elif current_barrel == barrel_right:
 			# screenshake
 			screenshake()
@@ -55,13 +63,21 @@ func shoot_dw() -> void:
 			$AnimationPlayer.play("recoil_right")
 			current_barrel.bumm()
 			current_barrel = barrel_left
-	
-	%HitRayCast3D.force_raycast_update()
-	if %HitRayCast3D.is_colliding():
-		var collider = %HitRayCast3D.get_collider()
-		if collider.has_method("take_damage"):
-			print("player: raycast hit")
-			collider.take_damage(damage)
+			hud.right()
+		
+		%HitRayCast3D.force_raycast_update()
+		if %HitRayCast3D.is_colliding():
+			var collider = %HitRayCast3D.get_collider()
+			if collider.has_method("take_damage"):
+				print("player: raycast hit")
+				collider.take_damage(damage)
+				spawn_boom(%HitRayCast3D.get_collision_point())
+
+
+func spawn_boom(pos: Vector3) -> void:
+	var boom_scene: Node3D = boom.instantiate()
+	add_child(boom_scene)
+	boom_scene.global_position = pos
 
 
 func _on_hitbox_body_entered(body: Node3D) -> void:
